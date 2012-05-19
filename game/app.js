@@ -71,7 +71,7 @@
           });
           tr.append(view.render().el);
         }
-        _results.push(this.el.append(tr));
+        _results.push($("#reversi_board").append(tr));
       }
       return _results;
     };

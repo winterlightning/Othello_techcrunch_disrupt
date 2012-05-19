@@ -45,7 +45,7 @@ class OthelloGame extends Spine.Controller
         view = new GridItem(item: a)
         tr.append(view.render().el)
       
-      @el.append(tr)
+      $("#reversi_board").append(tr)
 
 $ ->
   new OthelloGame()
@@ -54,4 +54,3 @@ exports = this
 exports.OthelloGame = OthelloGame
 exports.GridItem = GridItem
 exports.Grid = Grid
-
