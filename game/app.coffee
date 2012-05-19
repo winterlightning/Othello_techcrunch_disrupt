@@ -109,16 +109,30 @@ class OthelloGame extends Spine.Controller
         
         if Grid.exists(move.id[0]+x)          
           east_grid = Grid.find( move.id[0]+x )
-          console.log("grid horiz", east_grid)
+          #console.log("grid horiz", east_grid)
           
           if east_grid.content is move.content
             length = length + 1
           else
             east = false
           
-          console.log("length", length)
+          #console.log("length", length)
           
       #check west
+      if west
+        x = parseInt( move.id[1] ) + d
+        
+        if Grid.exists(move.id[0]+x)          
+          west_grid = Grid.find( move.id[0]+x )
+          console.log("grid horiz W", west_grid)
+          
+          if west_grid.content is move.content
+            length = length + 1
+          else
+            west = false
+
+      console.log("length", length)
+
       
     if length >= 4
       won = true
