@@ -47,3 +47,11 @@ class OthelloGame extends Spine.Controller
       
       @el.append(tr)
 
+$ ->
+  new OthelloGame()
+
+exports = this
+exports.OthelloGame = OthelloGame
+exports.GridItem = GridItem
+exports.Grid = Grid
+

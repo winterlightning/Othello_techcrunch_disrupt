@@ -1,5 +1,5 @@
 (function() {
-  var $, Grid, GridItem, OthelloGame;
+  var $, Grid, GridItem, OthelloGame, exports;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
     function ctor() { this.constructor = child; }
@@ -77,4 +77,11 @@
     };
     return OthelloGame;
   })();
+  $(function() {
+    return new OthelloGame();
+  });
+  exports = this;
+  exports.OthelloGame = OthelloGame;
+  exports.GridItem = GridItem;
+  exports.Grid = Grid;
 }).call(this);
