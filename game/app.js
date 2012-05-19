@@ -19,12 +19,19 @@
   })();
   GridItem = (function() {
     __extends(GridItem, Spine.Controller);
+    GridItem.prototype.events = {
+      "click .clickable": "update_content"
+    };
     function GridItem() {
       this.render = __bind(this.render, this);      GridItem.__super__.constructor.apply(this, arguments);
       this.item.bind("update", this.render);
     }
     GridItem.prototype.render = function() {
-      this.replace("<td>" + this.item.content + "</td>");
+      if (this.item.content === "") {
+        this.replace("<td><div class='clickable' style='height: 30px; background-color: #fff; width: 30px'></div></td>");
+      } else {
+        this.replace("<td>" + this.item.content + "</td>");
+      }
       return this;
     };
     GridItem.prototype.update_content = function() {
@@ -47,10 +54,22 @@
           h = _ref2[_j];
           Grid.create({
             id: i + h,
-            content: "O"
+            content: ""
           });
         }
       }
+      Grid.find("44").updateAttributes({
+        content: "X"
+      });
+      Grid.find("45").updateAttributes({
+        content: "O"
+      });
+      Grid.find("55").updateAttributes({
+        content: "X"
+      });
+      Grid.find("54").updateAttributes({
+        content: "O"
+      });
       this.addall();
     }
     OthelloGame.prototype.addall = function() {
@@ -74,6 +93,9 @@
         _results.push($("#reversi_board").append(tr));
       }
       return _results;
+    };
+    OthelloGame.prototype.evaluate = function() {
+      return console.log("evaluate");
     };
     return OthelloGame;
   })();
