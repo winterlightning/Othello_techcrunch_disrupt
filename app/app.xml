@@ -25,102 +25,25 @@
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Othello techcrunch disrupt : Othello over google hangout for disrupt hackathon" />
+    
     <script src="//hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
+    
     <link rel="stylesheet" type="text/css" media="screen" href="http://raycwang.com/Othello_techcrunch_disrupt/stylesheets/stylesheet.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <title>Othello techcrunch disrupt</title>
     
     <style>
-    	#reversi_board { width: 500px; color: #fff }
-    	#reversi_board td { border: 1px solid #fff; text-align: center; }
+    	#connect_four { width: 500px; color: #fff; margin: 0px auto; margin-top: 30px; }
+    	#connect_four td { border: 1px solid #fff; text-align: center; }
     </style>
+  	
+  	<script src="http://raycwang.com/Othello_techcrunch_disrupt/spine/spine.js"></script> 
+	<script src="http://raycwang.com/Othello_techcrunch_disrupt/game/app.js"></script>  
   </head>
   <body>
-	<table id="reversi_board">
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>
-		<tr>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-			<td>O</td>
-		</tr>							
-	</table>	
+	<table id="connect_four"></table>	
   </body>
-</html>
-
-
+</html>  	
+  	
 ]]></Content>
 </Module>
