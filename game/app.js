@@ -107,7 +107,7 @@
       return _results;
     };
     OthelloGame.prototype.evaluate = function(move) {
-      var a, d, down, east, east_grid, length, v_length, west, west_grid, won, x, y, _i, _j, _len, _len2, _ref, _ref2;
+      var NE, NE_grid, SW, SW_grid, a, d, down, e_length, east, east_grid, length, v_length, west, west_grid, won, x, y, _i, _j, _k, _len, _len2, _len3, _ref, _ref2, _ref3;
       console.log("########################evaluate", move);
       won = false;
       v_length = 1;
@@ -116,11 +116,9 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         d = _ref[_i];
         y = parseInt(move.id[0]) + d;
-        console.log("y:", y);
         if (down) {
           if (Grid.exists(y.toString() + move.id[1])) {
             a = Grid.find(y.toString() + move.id[1]);
-            console.log("vertical grid", a, "move", move);
             if (move.content === a.content) {
               v_length = v_length + 1;
             } else {
@@ -166,6 +164,45 @@
       }
       if (length >= 4) {
         console.log("won from horizontal");
+        won = true;
+      }
+      e_length = 1;
+      NE = true;
+      SW = true;
+      _ref3 = [1, 2, 3];
+      for (_k = 0, _len3 = _ref3.length; _k < _len3; _k++) {
+        d = _ref3[_k];
+        if (NE) {
+          x = parseInt(move.id[1]) - d;
+          y = parseInt(move.id[0]) - d;
+          if (Grid.exists(y.toString() + x.toString())) {
+            NE_grid = Grid.find(y.toString() + x.toString());
+            console.log("grid diag E", NE_grid);
+            if (NE_grid.content === move.content) {
+              e_length = e_length + 1;
+            } else {
+              NE = false;
+            }
+            console.log("length", e_length);
+          }
+        }
+        if (SW) {
+          x = parseInt(move.id[1]) + d;
+          y = parseInt(move.id[0]) + d;
+          if (Grid.exists(y.toString() + x.toString())) {
+            SW_grid = Grid.find(y.toString() + x.toString());
+            console.log("grid diag W", SW_grid, "move", move);
+            if (SW_grid.content === move.content) {
+              e_length = e_length + 1;
+            } else {
+              SW = false;
+            }
+          }
+        }
+        console.log("length", e_length);
+      }
+      if (e_length >= 4) {
+        console.log("won from e diagnal");
         won = true;
       }
       return console.log(move.content, "won?", won);

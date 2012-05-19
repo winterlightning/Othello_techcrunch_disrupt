@@ -83,13 +83,13 @@ class OthelloGame extends Spine.Controller
     down = true
     for d in [1, 2, 3]
       y = parseInt(move.id[0]) + d
-      console.log("y:", y)
+      #console.log("y:", y)
       if down
         
         if Grid.exists( y.toString()+move.id[1] )
           a = Grid.find( y.toString()+move.id[1] )
           
-          console.log("vertical grid", a, "move", move)
+          #console.log("vertical grid", a, "move", move)
           
           if move.content is a.content
             v_length = v_length + 1
@@ -145,10 +145,48 @@ class OthelloGame extends Spine.Controller
       console.log("won from horizontal")
       won = true
     
-    #check South east
+    #check east starting diagonal
+    e_length = 1
+    NE = true
+    SW = true
     
+    for d in [1, 2, 3]
+      
+      #check east
+      if NE
+        x = parseInt( move.id[1] ) - d
+        y = parseInt( move.id[0] ) - d
+        
+        if Grid.exists(y.toString()+x.toString())          
+          NE_grid = Grid.find( y.toString()+x.toString() )
+          console.log("grid diag E", NE_grid)
+          
+          if NE_grid.content is move.content
+            e_length = e_length + 1
+          else
+            NE = false
+          
+          console.log("length", e_length)
+          
+      #check west
+      if SW
+        x = parseInt( move.id[1] ) + d
+        y = parseInt( move.id[0] ) + d
+        
+        if Grid.exists(y.toString()+x.toString())          
+          SW_grid = Grid.find( y.toString()+x.toString() )
+          console.log("grid diag W", SW_grid, "move", move)
+          
+          if SW_grid.content is move.content
+            e_length = e_length + 1
+          else
+            SW = false    
+        
+      console.log("length", e_length)
     
-    #check South west
+    if e_length >= 4
+      console.log("won from e diagnal")
+      won = true
 
     console.log(move.content, "won?", won)
     
