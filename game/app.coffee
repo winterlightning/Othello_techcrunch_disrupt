@@ -231,7 +231,9 @@ class OthelloGame extends Spine.Controller
       console.log("won from w diagnal")
       won = true    
 
-    console.log(move.content, "won?", won)
+    if won
+      alert(move.content+" won!")
+      location.reload()
     
 $ ->
   new OthelloGame()

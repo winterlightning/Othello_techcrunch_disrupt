@@ -244,7 +244,10 @@
         console.log("won from w diagnal");
         won = true;
       }
-      return console.log(move.content, "won?", won);
+      if (won) {
+        alert(move.content + " won!");
+        return location.reload();
+      }
     };
     return OthelloGame;
   })();
