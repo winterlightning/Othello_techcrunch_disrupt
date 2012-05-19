@@ -55,10 +55,10 @@
       var h, i, _i, _j, _len, _len2, _ref, _ref2;
       OthelloGame.__super__.constructor.apply(this, arguments);
       Grid.bind("update", this.evaluate);
-      _ref = ["1", "2", "3", "4", "5", "6", "7", "8"];
+      _ref = ["1", "2", "3", "4", "5", "6", "7"];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         i = _ref[_i];
-        _ref2 = ["1", "2", "3", "4", "5", "6", "7", "8"];
+        _ref2 = ["1", "2", "3", "4", "5", "6", "7"];
         for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
           h = _ref2[_j];
           Grid.create({
@@ -84,12 +84,12 @@
     OthelloGame.prototype.addall = function() {
       var a, h, i, key, tr, view, _i, _j, _len, _len2, _ref, _ref2, _results;
       console.log("add all");
-      _ref = ["1", "2", "3", "4", "5", "6", "7", "8"];
+      _ref = ["1", "2", "3", "4", "5", "6", "7"];
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         i = _ref[_i];
         tr = $("<tr></tr>");
-        _ref2 = ["1", "2", "3", "4", "5", "6", "7", "8"];
+        _ref2 = ["1", "2", "3", "4", "5", "6", "7"];
         for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
           h = _ref2[_j];
           key = i + h;
@@ -99,12 +99,9 @@
           });
           tr.append(view.render().el);
         }
-        _results.push($("#reversi_board").append(tr));
+        _results.push($("#connect_four").append(tr));
       }
       return _results;
-    };
-    OthelloGame.prototype.flip = function(starting_grid, direction) {
-      return console.log("flip", starting_grid, direction);
     };
     OthelloGame.prototype.evaluate = function(move) {
       return console.log("evaluate", move);

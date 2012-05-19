@@ -41,8 +41,8 @@ class OthelloGame extends Spine.Controller
     super
     Grid.bind("update",  @evaluate)
     
-    for i in ["1", "2", "3", "4", "5", "6", "7", "8"]
-      for h in ["1", "2", "3", "4", "5", "6", "7", "8"]
+    for i in ["1", "2", "3", "4", "5", "6", "7"]
+      for h in ["1", "2", "3", "4", "5", "6", "7"]
         Grid.create id: i+h, content: ""
     
     #initialize the first four
@@ -56,32 +56,17 @@ class OthelloGame extends Spine.Controller
   addall: ->
     console.log("add all")
 
-    for i in ["1", "2", "3", "4", "5", "6", "7", "8"]
+    for i in ["1", "2", "3", "4", "5", "6", "7"]
       tr = $("<tr></tr>")
         
-      for h in ["1", "2", "3", "4", "5", "6", "7", "8"]
+      for h in ["1", "2", "3", "4", "5", "6", "7"]
         key = i+h
         a = Grid.find(key)
         
         view = new GridItem(item: a)
         tr.append(view.render().el)
       
-      $("#reversi_board").append(tr)
-
-  flip: ( starting_grid, direction )->
-    console.log("flip", starting_grid, direction)
-    
-    direction_map = { "N": [0, -1], "S": [0, 1], "E": [1, 0], "W", [-1, 0] }
-    
-    #move one block in that direction
-    
-      #chck the block
-      
-        #if the same type as the grid, stop, and flip all the saved blocks
-        
-        #if the different type as the grid, save it in a array
-        
-        #if a empty block, stop entirely and return
+      $("#connect_four").append(tr)
     
 
   evaluate: (move) ->
