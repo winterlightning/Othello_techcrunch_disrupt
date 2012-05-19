@@ -78,21 +78,29 @@ class OthelloGame extends Spine.Controller
     #check for consecutive 4s
     won = false
     
+    v_length = 1
     #check vertical line
+    down = true
     for d in [1, 2, 3]
-      y = parseInt(move.id[1]) + d
-      a = Grid.find( y+move.id[1] )
-      
-      if a?
-        if move.content is a.content
-          won = true
-          continue
+      y = parseInt(move.id[0]) + d
+      console.log("y:", y)
+      if down
+        
+        if Grid.exists( y.toString()+move.id[1] )
+          a = Grid.find( y.toString()+move.id[1] )
+          
+          console.log("vertical grid", a, "move", move)
+          
+          if move.content is a.content
+            v_length = v_length + 1
+          else
+            down = false
         else
-          won = false
-          break
-      else
-        won = false
-        break
+          down = false
+    
+    if v_length >= 4
+      console.log("won from veritcal")
+      won = true
 
     #check horizontal line
     #go to both direction, stop when you encounter nothing or someone else's piece
@@ -124,20 +132,21 @@ class OthelloGame extends Spine.Controller
         
         if Grid.exists(move.id[0]+x)          
           west_grid = Grid.find( move.id[0]+x )
-          console.log("grid horiz W", west_grid)
+          #console.log("grid horiz W", west_grid)
           
           if west_grid.content is move.content
             length = length + 1
           else
             west = false
 
-      console.log("length", length)
-
+      #console.log("length", length)
       
     if length >= 4
+      console.log("won from horizontal")
       won = true
     
     #check South east
+    
     
     #check South west
 

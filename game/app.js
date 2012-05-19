@@ -107,26 +107,33 @@
       return _results;
     };
     OthelloGame.prototype.evaluate = function(move) {
-      var a, d, east, east_grid, length, west, west_grid, won, x, y, _i, _j, _len, _len2, _ref, _ref2;
+      var a, d, down, east, east_grid, length, v_length, west, west_grid, won, x, y, _i, _j, _len, _len2, _ref, _ref2;
       console.log("########################evaluate", move);
       won = false;
+      v_length = 1;
+      down = true;
       _ref = [1, 2, 3];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         d = _ref[_i];
-        y = parseInt(move.id[1]) + d;
-        a = Grid.find(y + move.id[1]);
-        if (a != null) {
-          if (move.content === a.content) {
-            won = true;
-            continue;
+        y = parseInt(move.id[0]) + d;
+        console.log("y:", y);
+        if (down) {
+          if (Grid.exists(y.toString() + move.id[1])) {
+            a = Grid.find(y.toString() + move.id[1]);
+            console.log("vertical grid", a, "move", move);
+            if (move.content === a.content) {
+              v_length = v_length + 1;
+            } else {
+              down = false;
+            }
           } else {
-            won = false;
-            break;
+            down = false;
           }
-        } else {
-          won = false;
-          break;
         }
+      }
+      if (v_length >= 4) {
+        console.log("won from veritcal");
+        won = true;
       }
       length = 1;
       east = true;
@@ -149,7 +156,6 @@
           x = parseInt(move.id[1]) + d;
           if (Grid.exists(move.id[0] + x)) {
             west_grid = Grid.find(move.id[0] + x);
-            console.log("grid horiz W", west_grid);
             if (west_grid.content === move.content) {
               length = length + 1;
             } else {
@@ -157,9 +163,9 @@
             }
           }
         }
-        console.log("length", length);
       }
       if (length >= 4) {
+        console.log("won from horizontal");
         won = true;
       }
       return console.log(move.content, "won?", won);
