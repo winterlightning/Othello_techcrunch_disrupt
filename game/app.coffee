@@ -188,6 +188,49 @@ class OthelloGame extends Spine.Controller
       console.log("won from e diagnal")
       won = true
 
+    #check east starting diagonal
+    w_length = 1
+    NW = true
+    SE = true
+    
+    for d in [1, 2, 3]
+      
+      #check east
+      if NW
+        x = parseInt( move.id[1] ) + d
+        y = parseInt( move.id[0] ) - d
+        
+        if Grid.exists(y.toString()+x.toString())          
+          NW_grid = Grid.find( y.toString()+x.toString() )
+          console.log("grid diag E", NW_grid)
+          
+          if NW_grid.content is move.content
+            w_length = w_length + 1
+          else
+            NW = false
+          
+          console.log("length", w_length)
+          
+      #check west
+      if SE
+        x = parseInt( move.id[1] ) - d
+        y = parseInt( move.id[0] ) + d
+        
+        if Grid.exists(y.toString()+x.toString())          
+          SE_grid = Grid.find( y.toString()+x.toString() )
+          console.log("grid diag W", SE_grid, "move", move)
+          
+          if SE_grid.content is move.content
+            w_length = w_length + 1
+          else
+            SE = false    
+        
+      console.log("length", w_length)
+      
+    if w_length >= 4
+      console.log("won from w diagnal")
+      won = true    
+
     console.log(move.content, "won?", won)
     
 $ ->
