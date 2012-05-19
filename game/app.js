@@ -9,6 +9,7 @@
     return child;
   }, __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   $ = jQuery;
+  window.current_player = "X";
   Grid = (function() {
     __extends(Grid, Spine.Model);
     function Grid() {
@@ -35,7 +36,15 @@
       return this;
     };
     GridItem.prototype.update_content = function() {
-      return console.log("update content");
+      console.log("update content");
+      this.item.updateAttributes({
+        content: window.current_player
+      });
+      if (window.current_player === "X") {
+        return window.current_player = "O";
+      } else {
+        return window.current_player = "X";
+      }
     };
     return GridItem;
   })();
@@ -94,8 +103,11 @@
       }
       return _results;
     };
-    OthelloGame.prototype.evaluate = function() {
-      return console.log("evaluate");
+    OthelloGame.prototype.flip = function(starting_grid, direction) {
+      return console.log("flip", starting_grid, direction);
+    };
+    OthelloGame.prototype.evaluate = function(move) {
+      return console.log("evaluate", move);
     };
     return OthelloGame;
   })();

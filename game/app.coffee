@@ -1,5 +1,7 @@
 $ = jQuery
 
+window.current_player = "X"
+
 #model for each Grid
 class Grid extends Spine.Model
   @configure "Grid", "content"
@@ -23,6 +25,13 @@ class GridItem extends Spine.Controller
   
   update_content: ->
     console.log("update content")
+    
+    @item.updateAttributes( content: window.current_player )
+    
+    if window.current_player is "X"
+      window.current_player = "O"
+    else
+      window.current_player = "X"
 
 #App for the overall game
 class OthelloGame extends Spine.Controller
@@ -59,8 +68,27 @@ class OthelloGame extends Spine.Controller
       
       $("#reversi_board").append(tr)
 
-  evaluate: ->
-    console.log("evaluate")
+  flip: ( starting_grid, direction )->
+    console.log("flip", starting_grid, direction)
+    
+    direction_map = { "N": [0, -1], "S": [0, 1], "E": [1, 0], "W", [-1, 0] }
+    
+    #move one block in that direction
+    
+      #chck the block
+      
+        #if the same type as the grid, stop, and flip all the saved blocks
+        
+        #if the different type as the grid, save it in a array
+        
+        #if a empty block, stop entirely and return
+    
+
+  evaluate: (move) ->
+    console.log("evaluate", move)
+    
+    #check all 8 direction, if you encounter either space or another piece of the same type, then flip everything in between
+    
 
 $ ->
   new OthelloGame()
