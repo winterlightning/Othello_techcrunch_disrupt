@@ -107,8 +107,8 @@
       return _results;
     };
     OthelloGame.prototype.evaluate = function(move) {
-      var a, d, won, y, _i, _len, _ref;
-      console.log("evaluate", move);
+      var a, d, east, east_grid, length, west, won, x, y, _i, _j, _len, _len2, _ref, _ref2;
+      console.log("########################evaluate", move);
       won = false;
       _ref = [1, 2, 3];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -128,7 +128,30 @@
           break;
         }
       }
-      return console.log("won?", won);
+      length = 1;
+      east = true;
+      west = true;
+      _ref2 = [1, 2, 3];
+      for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
+        d = _ref2[_j];
+        if (east) {
+          x = parseInt(move.id[1]) - d;
+          if (Grid.exists(move.id[0] + x)) {
+            east_grid = Grid.find(move.id[0] + x);
+            console.log("grid horiz", east_grid);
+            if (east_grid.content === move.content) {
+              length = length + 1;
+            } else {
+              east = false;
+            }
+            console.log("length", length);
+          }
+        }
+      }
+      if (length >= 4) {
+        won = true;
+      }
+      return console.log(move.content, "won?", won);
     };
     return OthelloGame;
   })();

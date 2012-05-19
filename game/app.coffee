@@ -73,12 +73,12 @@ class OthelloGame extends Spine.Controller
     
 
   evaluate: (move) ->
-    console.log("evaluate", move)
+    console.log("########################evaluate", move)
     
     #check for consecutive 4s
     won = false
     
-    #check south  
+    #check vertical line
     for d in [1, 2, 3]
       y = parseInt(move.id[1]) + d
       a = Grid.find( y+move.id[1] )
@@ -94,7 +94,40 @@ class OthelloGame extends Spine.Controller
         won = false
         break
 
-    console.log("won?", won)
+    #check horizontal line
+    #go to both direction, stop when you encounter nothing or someone else's piece
+    #count length at end
+    length = 1
+    east = true
+    west = true
+    
+    for d in [1, 2, 3]
+      
+      #check east
+      if east
+        x = parseInt( move.id[1] ) - d
+        
+        if Grid.exists(move.id[0]+x)          
+          east_grid = Grid.find( move.id[0]+x )
+          console.log("grid horiz", east_grid)
+          
+          if east_grid.content is move.content
+            length = length + 1
+          else
+            east = false
+          
+          console.log("length", length)
+          
+      #check west
+      
+    if length >= 4
+      won = true
+    
+    #check South east
+    
+    #check South west
+
+    console.log(move.content, "won?", won)
     
 $ ->
   new OthelloGame()
