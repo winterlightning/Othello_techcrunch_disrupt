@@ -18,9 +18,12 @@ class GridItem extends Spine.Controller
     
   render: =>
     if @item.content is ""
-      @replace( "<td id='#{ @item.id }'><div class='clickable' style='height: 30px; background-color: #fff; width: 30px'></div></td>" )
+      @replace( "<td id='#{ @item.id }'><div class='clickable' style='height: 50px; background-color: #fff; width: 100%'>&nbsp;</div></td>" )
     else
-      @replace( "<td id='#{ @item.id }'>#{@item.content}</td>" )
+      if @item.content is "X"
+        @replace( "<td id='#{ @item.id }' style='background-color: #020'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>" )
+      else
+        @replace( "<td id='#{ @item.id }' style='background-color: #00a'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>" )
     @
   
   update_content: ->

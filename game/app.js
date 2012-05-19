@@ -29,9 +29,13 @@
     }
     GridItem.prototype.render = function() {
       if (this.item.content === "") {
-        this.replace("<td id='" + this.item.id + "'><div class='clickable' style='height: 30px; background-color: #fff; width: 30px'></div></td>");
+        this.replace("<td id='" + this.item.id + "'><div class='clickable' style='height: 50px; background-color: #fff; width: 100%'>&nbsp;</div></td>");
       } else {
-        this.replace("<td id='" + this.item.id + "'>" + this.item.content + "</td>");
+        if (this.item.content === "X") {
+          this.replace("<td id='" + this.item.id + "' style='background-color: #020'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>");
+        } else {
+          this.replace("<td id='" + this.item.id + "' style='background-color: #00a'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>");
+        }
       }
       return this;
     };
