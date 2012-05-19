@@ -18,20 +18,29 @@ class GridItem extends Spine.Controller
     
   render: =>
     if @item.content is ""
-      @replace( "<td><div class='clickable' style='height: 30px; background-color: #fff; width: 30px'></div></td>" )
+      @replace( "<td id='#{ @item.id }'><div class='clickable' style='height: 30px; background-color: #fff; width: 30px'></div></td>" )
     else
-      @replace( "<td>#{@item.content}</td>" )
+      @replace( "<td id='#{ @item.id }'>#{@item.content}</td>" )
     @
   
   update_content: ->
     console.log("update content")
     
-    @item.updateAttributes( content: window.current_player )
-    
-    if window.current_player is "X"
-      window.current_player = "O"
-    else
-      window.current_player = "X"
+    found = false
+    while not found
+      for x in ["7", "6", "5", "4", "3", "2", "1"]
+        a = Grid.find(x+@item.id[1])
+        
+        if a.content is ""
+          a.updateAttributes( content: window.current_player )
+          found = true
+          
+          if window.current_player is "X"
+            window.current_player = "O"
+          else
+            window.current_player = "X"
+            
+          return
 
 #App for the overall game
 class OthelloGame extends Spine.Controller
@@ -44,12 +53,6 @@ class OthelloGame extends Spine.Controller
     for i in ["1", "2", "3", "4", "5", "6", "7"]
       for h in ["1", "2", "3", "4", "5", "6", "7"]
         Grid.create id: i+h, content: ""
-    
-    #initialize the first four
-    Grid.find("44").updateAttributes( content: "X" )
-    Grid.find("45").updateAttributes( content: "O" )
-    Grid.find("55").updateAttributes( content: "X" )
-    Grid.find("54").updateAttributes( content: "O" )
     
     @addall()
 
@@ -72,9 +75,27 @@ class OthelloGame extends Spine.Controller
   evaluate: (move) ->
     console.log("evaluate", move)
     
-    #check all 8 direction, if you encounter either space or another piece of the same type, then flip everything in between
+    #check for consecutive 4s
+    won = false
     
+    #check south  
+    for d in [1, 2, 3]
+      y = parseInt(move.id[1]) + d
+      a = Grid.find( y+move.id[1] )
+      
+      if a?
+        if move.content is a.content
+          won = true
+          continue
+        else
+          won = false
+          break
+      else
+        won = false
+        break
 
+    console.log("won?", won)
+    
 $ ->
   new OthelloGame()
 

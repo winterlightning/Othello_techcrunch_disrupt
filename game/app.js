@@ -29,22 +29,37 @@
     }
     GridItem.prototype.render = function() {
       if (this.item.content === "") {
-        this.replace("<td><div class='clickable' style='height: 30px; background-color: #fff; width: 30px'></div></td>");
+        this.replace("<td id='" + this.item.id + "'><div class='clickable' style='height: 30px; background-color: #fff; width: 30px'></div></td>");
       } else {
-        this.replace("<td>" + this.item.content + "</td>");
+        this.replace("<td id='" + this.item.id + "'>" + this.item.content + "</td>");
       }
       return this;
     };
     GridItem.prototype.update_content = function() {
+      var a, found, x, _i, _len, _ref, _results;
       console.log("update content");
-      this.item.updateAttributes({
-        content: window.current_player
-      });
-      if (window.current_player === "X") {
-        return window.current_player = "O";
-      } else {
-        return window.current_player = "X";
+      found = false;
+      _results = [];
+      while (!found) {
+        _ref = ["7", "6", "5", "4", "3", "2", "1"];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          x = _ref[_i];
+          a = Grid.find(x + this.item.id[1]);
+          if (a.content === "") {
+            a.updateAttributes({
+              content: window.current_player
+            });
+            found = true;
+            if (window.current_player === "X") {
+              window.current_player = "O";
+            } else {
+              window.current_player = "X";
+            }
+            return;
+          }
+        }
       }
+      return _results;
     };
     return GridItem;
   })();
@@ -67,18 +82,6 @@
           });
         }
       }
-      Grid.find("44").updateAttributes({
-        content: "X"
-      });
-      Grid.find("45").updateAttributes({
-        content: "O"
-      });
-      Grid.find("55").updateAttributes({
-        content: "X"
-      });
-      Grid.find("54").updateAttributes({
-        content: "O"
-      });
       this.addall();
     }
     OthelloGame.prototype.addall = function() {
@@ -104,7 +107,28 @@
       return _results;
     };
     OthelloGame.prototype.evaluate = function(move) {
-      return console.log("evaluate", move);
+      var a, d, won, y, _i, _len, _ref;
+      console.log("evaluate", move);
+      won = false;
+      _ref = [1, 2, 3];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        d = _ref[_i];
+        y = parseInt(move.id[1]) + d;
+        a = Grid.find(y + move.id[1]);
+        if (a != null) {
+          if (move.content === a.content) {
+            won = true;
+            continue;
+          } else {
+            won = false;
+            break;
+          }
+        } else {
+          won = false;
+          break;
+        }
+      }
+      return console.log("won?", won);
     };
     return OthelloGame;
   })();
