@@ -248,6 +248,32 @@ window.consume_update = (thestate)->
     updating = Grid.find(a)
     updating.updateAttributes( content: thestate["content"] )
 
+window.update_users = () ->
+  state = gapi.hangout.data.getState()
+  if state["x"]? and gapi.hangout.getParticipants().length is 2
+    console.log("state 2")
+    if not window.player?
+      window.player = "O"
+      cur_player = gapi.hangout.getParticipants()[1]
+      
+      if cur_player["person"].displayName isnt state["x"]
+        $("#o_text").html( cur_player["person"].displayName )
+        $("#x_text").html( state["x"] )
+      else
+        cur_player = gapi.hangout.getParticipants()[0]
+        $("#o_text").html( cur_player["person"].displayName )
+        $("#x_text").html( state["x"] )
+        
+    else
+      other_player = gapi.hangout.getParticipants()[1]
+      $("#o_text").html( other_player["person"].displayName )
+  else
+    console.log("state 1")
+    window.player = "X"
+    cur_player = gapi.hangout.getParticipants()[0]
+    $("#x_text").html( cur_player["person"].displayName )
+    gapi.hangout.data.submitDelta('x': cur_player["person"].displayName )
+
 apiReady = (eventObj) ->
   if eventObj.isApiReady
     console.log "API is ready"
@@ -259,32 +285,9 @@ apiReady = (eventObj) ->
     gapi.hangout.onParticipantsChanged.add (eventObj) ->
       console.log "Participant ENTERED TRIGGER"
 
-      state = gapi.hangout.data.getState()
-      if state["x"]? and gapi.hangout.getParticipants().length is 2
-        console.log("state 2")
-        if not window.player?
-          window.player = "O"
-          cur_player = gapi.hangout.getParticipants()[1]
-          
-          if cur_player["person"].displayName isnt state["x"]
-            $("#o_text").html( cur_player["person"].displayName )
-            $("#x_text").html( state["x"] )
-          else
-            cur_player = gapi.hangout.getParticipants()[0]
-            $("#o_text").html( cur_player["person"].displayName )
-            $("#x_text").html( state["x"] )
-            
-        else
-          other_player = gapi.hangout.getParticipants()[1]
-          $("#o_text").html( other_player["person"].displayName )
-      else
-        console.log("state 1")
-        window.player = "X"
-        cur_player = gapi.hangout.getParticipants()[0]
-        $("#x_text").html( cur_player["person"].displayName )
-        gapi.hangout.data.submitDelta('x': cur_player["person"].displayName )
+      window.update_users() 
        
-      
+    window.update_users()
     console.log gapi.hangout.getParticipants()
     
     #get state and participant, pick x and o
