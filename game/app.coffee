@@ -18,12 +18,12 @@ class GridItem extends Spine.Controller
     
   render: =>
     if @item.content is ""
-      @replace( "<td id='#{ @item.id }'><div class='clickable' style='height: 50px; background-color: #fff; width: 100%'>&nbsp;</div></td>" )
+      @replace( "<td id='#{ @item.id }'><div class='clickable' style='height: 60px; background-color: transparent; width: 100%'>&nbsp;</div></td>" )
     else
       if @item.content is "X"
-        @replace( "<td id='#{ @item.id }' style='background-color: #020'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>" )
+        @replace( "<td id='#{ @item.id }' style='background-color: #BF0426; opacity: 0.7'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>" )
       else
-        @replace( "<td id='#{ @item.id }' style='background-color: #00a'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>" )
+        @replace( "<td id='#{ @item.id }' style='background-color: #45648C; opacity: 0.7'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>" )
     @
   
   update_content: ->
@@ -234,7 +234,7 @@ class OthelloGame extends Spine.Controller
       console.log("won from w diagnal")
       won = true    
 
-    gapi.hangout.data.submitDelta('id': move.id, content: move.content)
+    #gapi.hangout.data.submitDelta('id': move.id, content: move.content)
 
     if won
       alert(move.content+" won!")
@@ -263,7 +263,7 @@ apiReady = (eventObj) ->
     console.log gapi.hangout.getParticipants()
     gapi.hangout.onApiReady.remove apiReady
 
-gapi.hangout.onApiReady.add apiReady  
+#gapi.hangout.onApiReady.add apiReady  
     
 $ ->
   new OthelloGame()

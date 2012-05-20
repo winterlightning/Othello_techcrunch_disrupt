@@ -29,12 +29,12 @@
     }
     GridItem.prototype.render = function() {
       if (this.item.content === "") {
-        this.replace("<td id='" + this.item.id + "'><div class='clickable' style='height: 50px; background-color: #fff; width: 100%'>&nbsp;</div></td>");
+        this.replace("<td id='" + this.item.id + "'><div class='clickable' style='height: 60px; background-color: transparent; width: 100%'>&nbsp;</div></td>");
       } else {
         if (this.item.content === "X") {
-          this.replace("<td id='" + this.item.id + "' style='background-color: #020'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>");
+          this.replace("<td id='" + this.item.id + "' style='background-color: #BF0426; opacity: 0.7'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>");
         } else {
-          this.replace("<td id='" + this.item.id + "' style='background-color: #00a'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>");
+          this.replace("<td id='" + this.item.id + "' style='background-color: #45648C; opacity: 0.7'><div class='content' style='height: 50px; width: 100%'>&nbsp;</div></td>");
         }
       }
       return this;
@@ -248,10 +248,6 @@
         console.log("won from w diagnal");
         won = true;
       }
-      gapi.hangout.data.submitDelta({
-        'id': move.id,
-        content: move.content
-      });
       if (won) {
         alert(move.content + " won!");
         return location.reload();
@@ -284,7 +280,6 @@
       return gapi.hangout.onApiReady.remove(apiReady);
     }
   };
-  gapi.hangout.onApiReady.add(apiReady);
   $(function() {
     return new OthelloGame();
   });
