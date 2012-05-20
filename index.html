@@ -1,110 +1,51 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Othello techcrunch disrupt : Othello over google hangout for disrupt hackathon" />
+    <meta name="description" content="Connect 4 for Google Hangouts : Play connect 4 while staring into people's faces" />
+
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <title>Connect 4</title>
-    
-    <style>
-    	#connect_four { width: 550px; color: #fff; margin: 0px auto; margin-top: 20px; }
-    	#connect_four td { border: 3px solid #fff; text-align: center; padding: 0px;}
-    	#connect_four .clickable { cursor: pointer }
-    	body { background: url('images/purty_wood.png') }
-    	.player {
-	    	display: block;
-			width: 200px;
-			background-color: 
-			rgba(0, 0, 0, 0.5);
-			height: 200px;
-			position: absolute;
-			top: 20px;
-			border-radius: 7px;
-			padding: 0px 5px;
-			color: #fff;
-		}
-		#player_x { left: 10%; }
-		#player_o { right: 10%;  }
-		p { margin-top: 0px; color: #fff; text-align: center }
-		
-      /* Notifications */
 
-      #EventContainer {
-        position: absolute;
-		top: 0px;
-		left: 40%;
-        padding: 20px 20px 0 0;
-      }
-
-      #EventContainer div.notice-inner {
-        position: relative;
-        width: 200px;
-        padding: 5px 15px 5px 10px;
-        margin:0 0 5px 0;
-        background-color: #000;
-        color: #FFF;
-
-        /* Round corners */
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-
-        /* Opacity */
-        filter:alpha(opacity=50);
-        -moz-opacity:0.5;
-        -khtml-opacity: 0.5;
-        opacity: 0.5;
-      }
-
-      #EventContainer > div.notice-inner span {
-        cursor: pointer;
-        position: absolute;
-        right: 5px;
-        top: 7px;
-        height: 7px;
-        width: 7px;
-        border: 1px solid #999;
-
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        border-radius: 2px;
-
-        text-indent: -999px;
-        
-      }
-      .notice-inner span {
-      	float: right !important;
-      }
-      
-      #EventContainer > div.notice-inner span:hover {
-        background-color: #AAA;
-      }
-
-      #EventContainer div b {
-        color: #0F0;
-      }		
-		
-    </style>
-  	
-  	<script src="spine/spine.js"></script> 
-	<script src="game/app.js"></script>  
-	<script src="game/jquery.growl.min.js"></script>  
+    <title>Connect 4 for Google Hangouts</title>
   </head>
+
   <body>
-	<div class="centered">
-		<table id="connect_four"></table>	
-		<div id="player_x" class="player">
-			<h2 id="x_text" style="color: white; text-align: center; font-family: Helvetica; font-size: 24px">No Opponent</h2>
-			<p>Currently Playing Red</p>
-		</div>
-		
-		<div id="player_o" class="player">
-			<h2 id="o_text" style="color: white; text-align: center; font-family: Helvetica; font-size: 24px">No Opponent</h2>
-			<p>Currently Playing Blue</p>
-		</div>
-	</div>
-	<div id="EventContainer"></div>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/winterlightning/test_again">View on GitHub</a>
+
+          <h1 id="project_title">Connect 4 for Google Hangouts</h1>
+          <h2 id="project_tagline">Play connect 4 while staring into people's faces</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://plus.google.com/hangouts/_?gid=418368515811">Go to hangout with this app</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Connect 4 for Google Hangout</h3>
+		<img src="images/gameshot.png" />
+		<p>Using new api provided by google in multi-browser syncing, Connect 4 allows you to play a classic game with your friend. To try it out, click on the folder icon above (I know it says zip.) and it will open up a Hangout session. Invite your friend to play. Note: Both of you might have to get the app first by clicking the link before you can play.</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Connect 4 for Google Hangouts maintained by <a href="https://github.com/winterlightning">winterlightning</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
