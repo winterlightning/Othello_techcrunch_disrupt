@@ -283,12 +283,15 @@
       state = gapi.hangout.data.getState();
       if (state["x"] != null) {
         window.player = "O";
+        cur_player = gapi.hangout.getParticipants()[0];
+        $("x_text").html(cur_player.displayName);
       } else {
         window.player = "X";
         cur_player = gapi.hangout.getParticipants()[0];
         gapi.hangout.data.submitDelta({
           'x': cur_player.id
         });
+        $("o_text").html(cur_player.displayName);
       }
       console.log(gapi.hangout.getParticipants());
       return gapi.hangout.onApiReady.remove(apiReady);
