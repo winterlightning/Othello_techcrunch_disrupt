@@ -234,9 +234,21 @@ class OthelloGame extends Spine.Controller
       console.log("won from w diagnal")
       won = true    
 
+    stringed = JSON.Stringify(move)
+    gapi.hangout.data.submitDelta('last': move)
+
     if won
       alert(move.content+" won!")
       location.reload()
+
+#take an update and apply it to the local model
+window.consume_update = (thestate)->
+    a = thestate["last"]
+    
+    parsed = JSON.parse(a)
+    
+    updating = Grid.find(parsed.id)
+    updating.updateAttributes( content: parsed.content )
     
 $ ->
   new OthelloGame()

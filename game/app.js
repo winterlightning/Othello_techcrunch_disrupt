@@ -111,7 +111,7 @@
       return _results;
     };
     OthelloGame.prototype.evaluate = function(move) {
-      var NE, NE_grid, NW, NW_grid, SE, SE_grid, SW, SW_grid, a, d, down, e_length, east, east_grid, length, v_length, w_length, west, west_grid, won, x, y, _i, _j, _k, _l, _len, _len2, _len3, _len4, _ref, _ref2, _ref3, _ref4;
+      var NE, NE_grid, NW, NW_grid, SE, SE_grid, SW, SW_grid, a, d, down, e_length, east, east_grid, length, stringed, v_length, w_length, west, west_grid, won, x, y, _i, _j, _k, _l, _len, _len2, _len3, _len4, _ref, _ref2, _ref3, _ref4;
       console.log("########################evaluate", move);
       won = false;
       v_length = 1;
@@ -248,6 +248,10 @@
         console.log("won from w diagnal");
         won = true;
       }
+      stringed = JSON.Stringify(move);
+      gapi.hangout.data.submitDelta({
+        'last': move
+      });
       if (won) {
         alert(move.content + " won!");
         return location.reload();
@@ -255,6 +259,15 @@
     };
     return OthelloGame;
   })();
+  window.consume_update = function(thestate) {
+    var a, parsed, updating;
+    a = thestate["last"];
+    parsed = JSON.parse(a);
+    updating = Grid.find(parsed.id);
+    return updating.updateAttributes({
+      content: parsed.content
+    });
+  };
   $(function() {
     var apiReady, init;
     new OthelloGame();
