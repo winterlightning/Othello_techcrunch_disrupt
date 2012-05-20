@@ -269,7 +269,7 @@
     });
   };
   window.update_users = function() {
-    var cur_player, other_player, state;
+    var cur_player, state;
     state = gapi.hangout.data.getState();
     if ((state["x"] != null) && gapi.hangout.getParticipants().length === 2) {
       console.log("state 2");
@@ -285,8 +285,15 @@
           return $("#x_text").html(state["x"]);
         }
       } else {
-        other_player = gapi.hangout.getParticipants()[1];
-        return $("#o_text").html(other_player["person"].displayName);
+        cur_player = gapi.hangout.getParticipants()[1];
+        if (cur_player["person"].displayName !== state["x"]) {
+          $("#o_text").html(cur_player["person"].displayName);
+          return $("#x_text").html(state["x"]);
+        } else {
+          cur_player = gapi.hangout.getParticipants()[0];
+          $("#o_text").html(cur_player["person"].displayName);
+          return $("#x_text").html(state["x"]);
+        }
       }
     } else {
       console.log("state 1");
