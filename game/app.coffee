@@ -268,8 +268,8 @@ apiReady = (eventObj) ->
       else
         window.player = "X"
         cur_player = gapi.hangout.getParticipants()[0]
+        $("#x_text").html( cur_player["person"].displayName )
         gapi.hangout.data.submitDelta('x': cur_player["person"].displayName )
-        $("#x_text").html( cur_player.displayName )
        
       
     console.log gapi.hangout.getParticipants()

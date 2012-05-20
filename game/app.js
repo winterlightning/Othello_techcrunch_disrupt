@@ -288,10 +288,10 @@
         } else {
           window.player = "X";
           cur_player = gapi.hangout.getParticipants()[0];
-          gapi.hangout.data.submitDelta({
+          $("#x_text").html(cur_player["person"].displayName);
+          return gapi.hangout.data.submitDelta({
             'x': cur_player["person"].displayName
           });
-          return $("#x_text").html(cur_player.displayName);
         }
       });
       console.log(gapi.hangout.getParticipants());
