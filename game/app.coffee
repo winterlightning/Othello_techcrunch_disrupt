@@ -275,13 +275,13 @@ apiReady = (eventObj) ->
     if state["x"]?
       window.player = "O"
       cur_player = gapi.hangout.getParticipants()[0]
-      $("o_text").html( cur_player.displayName )
-      $("x_text").html( state["x"] )
+      $("#o_text").html( cur_player.displayName )
+      $("#x_text").html( state["x"] )
     else
       window.player = "X"
       cur_player = gapi.hangout.getParticipants()[0]
       gapi.hangout.data.submitDelta('x': cur_player.displayName )
-      $("x_text").html( cur_player.displayName )  
+      $("#x_text").html( cur_player.displayName )  
       
     console.log gapi.hangout.getParticipants()
     
