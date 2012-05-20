@@ -1,5 +1,5 @@
 (function() {
-  var $, Grid, GridItem, OthelloGame, exports;
+  var $, Grid, GridItem, OthelloGame, apiReady, exports;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
     function ctor() { this.constructor = child; }
@@ -267,30 +267,24 @@
       content: thestate["content"]
     });
   };
+  apiReady = function(eventObj) {
+    if (eventObj.isApiReady) {
+      console.log("API is ready");
+      gapi.hangout.data.onStateChanged.add(function(eventObj) {
+        console.log("HANDLED");
+        return console.log(eventObj.state);
+      });
+      gapi.hangout.onParticipantsChanged.add(function(eventObj) {
+        return console.log(eventObj.participants);
+      });
+      console.log(gapi.hangout.data.getState());
+      console.log(gapi.hangout.getParticipants());
+      return gapi.hangout.onApiReady.remove(apiReady);
+    }
+  };
+  gapi.hangout.onApiReady.add(apiReady);
   $(function() {
-    var init;
-    new OthelloGame();
-    init = function() {
-      var apiReady;
-      console.log("Init app.");
-      apiReady = function(eventObj) {
-        if (eventObj.isApiReady) {
-          console.log("API is ready");
-          gapi.hangout.data.onStateChanged.add(function(eventObj) {
-            console.log("HANDLED");
-            return console.log(eventObj.state);
-          });
-          gapi.hangout.onParticipantsChanged.add(function(eventObj) {
-            return console.log(eventObj.participants);
-          });
-          console.log(gapi.hangout.data.getState());
-          console.log(gapi.hangout.getParticipants());
-          return gapi.hangout.onApiReady.remove(apiReady);
-        }
-      };
-      return gapi.hangout.onApiReady.add(apiReady);
-    };
-    return gadgets.util.registerOnLoadHandler(init);
+    return new OthelloGame();
   });
   exports = this;
   exports.OthelloGame = OthelloGame;
