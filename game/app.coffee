@@ -76,6 +76,9 @@ class OthelloGame extends Spine.Controller
     
 
   evaluate: (move) ->
+    if reset
+      return
+      
     console.log("########################evaluate", move)
     
     #check for consecutive 4s
@@ -237,8 +240,9 @@ class OthelloGame extends Spine.Controller
     gapi.hangout.data.submitDelta('id': move.id, content: move.content)
 
     if won
-      alert(move.content+" won!")
-      location.reload()
+      reset = true
+      for g in Grid.all()
+        g.updateAttributes( content: "" )
 
 #take an update and apply it to the local model
 window.consume_update = (thestate)->

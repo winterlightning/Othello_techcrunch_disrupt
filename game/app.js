@@ -111,7 +111,10 @@
       return _results;
     };
     OthelloGame.prototype.evaluate = function(move) {
-      var NE, NE_grid, NW, NW_grid, SE, SE_grid, SW, SW_grid, a, d, down, e_length, east, east_grid, length, v_length, w_length, west, west_grid, won, x, y, _i, _j, _k, _l, _len, _len2, _len3, _len4, _ref, _ref2, _ref3, _ref4;
+      var NE, NE_grid, NW, NW_grid, SE, SE_grid, SW, SW_grid, a, d, down, e_length, east, east_grid, g, length, reset, v_length, w_length, west, west_grid, won, x, y, _i, _j, _k, _l, _len, _len2, _len3, _len4, _len5, _m, _ref, _ref2, _ref3, _ref4, _ref5, _results;
+      if (reset) {
+        return;
+      }
       console.log("########################evaluate", move);
       won = false;
       v_length = 1;
@@ -253,8 +256,16 @@
         content: move.content
       });
       if (won) {
-        alert(move.content + " won!");
-        return location.reload();
+        reset = true;
+        _ref5 = Grid.all();
+        _results = [];
+        for (_m = 0, _len5 = _ref5.length; _m < _len5; _m++) {
+          g = _ref5[_m];
+          _results.push(g.updateAttributes({
+            content: ""
+          }));
+        }
+        return _results;
       }
     };
     return OthelloGame;
