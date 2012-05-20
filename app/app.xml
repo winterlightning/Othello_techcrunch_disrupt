@@ -37,7 +37,7 @@
     	#connect_four { width: 550px; color: #fff; margin: 0px auto; margin-top: 20px; }
     	#connect_four td { border: 3px solid #fff; text-align: center; padding: 0px;}
     	#connect_four .clickable { cursor: pointer }
-    	body { background: url('images/purty_wood.png') }
+    	body { background: url('https://s3.amazonaws.com/rwang_test/purty_wood.png') }
     	.player {
 	    	display: block;
 			width: 200px;
@@ -58,8 +58,8 @@
 
       #EventContainer {
         position: absolute;
-        bottom: 0;
-        right: 0;
+		top: 0px;
+		left: 40%;
         padding: 20px 20px 0 0;
       }
 

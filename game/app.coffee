@@ -1,6 +1,7 @@
 $ = jQuery
 
 window.current_player = "X"
+window.reset = false
 
 #model for each Grid
 class Grid extends Spine.Model
@@ -246,12 +247,12 @@ class OthelloGame extends Spine.Controller
         won_person = "Blue"
       
       $("#EventContainer").notify({
-        text: "<a onclick='window.reset()'>#{ won_person } won </a>", 
+        text: "#{ won_person } won. <a onclick='window.reset_grid()'>Click to reset.</a>", 
         "sticky": true
       })
 
 
-window.reset = ->
+window.reset_grid = ->
     window.reset = true
     for g in Grid.all()
       g.updateAttributes( content: "" )

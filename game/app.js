@@ -10,6 +10,7 @@
   }, __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   $ = jQuery;
   window.current_player = "X";
+  window.reset = false;
   Grid = (function() {
     __extends(Grid, Spine.Model);
     function Grid() {
@@ -262,14 +263,14 @@
           won_person = "Blue";
         }
         return $("#EventContainer").notify({
-          text: "<a onclick='window.reset()'>" + won_person + " won </a>",
+          text: "" + won_person + " won. <a onclick='window.reset_grid()'>Click to reset.</a>",
           "sticky": true
         });
       }
     };
     return OthelloGame;
   })();
-  window.reset = function() {
+  window.reset_grid = function() {
     var g, _i, _len, _ref;
     window.reset = true;
     _ref = Grid.all();
