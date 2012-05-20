@@ -76,7 +76,7 @@ class OthelloGame extends Spine.Controller
     
 
   evaluate: (move) ->
-    if reset
+    if window.reset
       return
       
     console.log("########################evaluate", move)
@@ -240,10 +240,10 @@ class OthelloGame extends Spine.Controller
     gapi.hangout.data.submitDelta('id': move.id, content: move.content)
 
     if won
-      reset = true
+      window.reset = true
       for g in Grid.all()
         g.updateAttributes( content: "" )
-      reset = false
+      window.reset = false
 
 #take an update and apply it to the local model
 window.consume_update = (thestate)->
