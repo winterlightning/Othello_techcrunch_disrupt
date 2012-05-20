@@ -269,7 +269,6 @@
     });
   };
   apiReady = function(eventObj) {
-    var cur_player, state;
     if (eventObj.isApiReady) {
       console.log("API is ready");
       gapi.hangout.data.onStateChanged.add(function(eventObj) {
@@ -278,21 +277,23 @@
         return window.consume_update(eventObj.state);
       });
       gapi.hangout.onParticipantsChanged.add(function(eventObj) {
-        return console.log(eventObj.participants);
+        var cur_player, state;
+        console.log("Participant ENTERED TRIGGER");
+        state = gapi.hangout.data.getState();
+        if (state["x"] != null) {
+          window.player = "O";
+          cur_player = gapi.hangout.getParticipants()[0];
+          $("o_text").html(cur_player.displayName);
+          return $("x_text").html(state["x"]);
+        } else {
+          window.player = "X";
+          cur_player = gapi.hangout.getParticipants()[0];
+          gapi.hangout.data.submitDelta({
+            'x': cur_player.displayName
+          });
+          return $("x_text").html(cur_player.displayName);
+        }
       });
-      state = gapi.hangout.data.getState();
-      if (state["x"] != null) {
-        window.player = "O";
-        cur_player = gapi.hangout.getParticipants()[0];
-        $("x_text").html(cur_player.displayName);
-      } else {
-        window.player = "X";
-        cur_player = gapi.hangout.getParticipants()[0];
-        gapi.hangout.data.submitDelta({
-          'x': cur_player.id
-        });
-        $("o_text").html(cur_player.displayName);
-      }
       console.log(gapi.hangout.getParticipants());
       return gapi.hangout.onApiReady.remove(apiReady);
     }

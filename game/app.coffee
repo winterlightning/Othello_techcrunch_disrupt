@@ -257,18 +257,19 @@ apiReady = (eventObj) ->
       window.consume_update eventObj.state
 
     gapi.hangout.onParticipantsChanged.add (eventObj) ->
-      console.log eventObj.participants
+      console.log "Participant ENTERED TRIGGER"
 
-    state = gapi.hangout.data.getState()
-    if state["x"]?
-      window.player = "O"
-      cur_player = gapi.hangout.getParticipants()[0]
-      $("x_text").html( cur_player.displayName )
-    else
-      window.player = "X"
-      cur_player = gapi.hangout.getParticipants()[0]
-      gapi.hangout.data.submitDelta('x': cur_player.id )
-      $("o_text").html( cur_player.displayName )
+      state = gapi.hangout.data.getState()
+      if state["x"]?
+        window.player = "O"
+        cur_player = gapi.hangout.getParticipants()[0]
+        $("o_text").html( cur_player.displayName )
+        $("x_text").html( state["x"] )
+      else
+        window.player = "X"
+        cur_player = gapi.hangout.getParticipants()[0]
+        gapi.hangout.data.submitDelta('x': cur_player.displayName )
+        $("x_text").html( cur_player.displayName )
       
     console.log gapi.hangout.getParticipants()
     
