@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <!-- /*
+ * Copyright (c) 2011 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy
+ * of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */ -->
+  <ModulePrefs title="Starter App">
+    <Require feature="rpc"/>
+  </ModulePrefs>
+  <Content type="html"><![CDATA[
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Othello techcrunch disrupt : Othello over google hangout for disrupt hackathon" />
+    
+    <?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <!-- /*
+ * Copyright (c) 2011 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy
+ * of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */ -->
+  <ModulePrefs title="Starter App">
+    <Require feature="rpc"/>
+  </ModulePrefs>
+  <Content type="html"><![CDATA[
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Othello techcrunch disrupt : Othello over google hangout for disrupt hackathon" />
+    
+    <script src="//hangoutsapi.talkgadget.google.com/hangouts/_/api/hangout.js?v=1.1"></script>
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="http://raycwang.com/Othello_techcrunch_disrupt/stylesheets/stylesheet.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <title>Othello techcrunch disrupt</title>
+    
+    <style>
+    	#connect_four { width: 500px; color: #fff; margin: 0px auto; margin-top: 30px; }
+    	#connect_four td { border: 1px solid #fff; text-align: center; padding: 5px;}
+    	body { background: url('https://s3.amazonaws.com/rwang_test/purty_wood.png') }
+    </style>
+  	
+  	<script src="http://raycwang.com/Othello_techcrunch_disrupt/spine/spine.js"></script> 
+	<script src="http://raycwang.com/Othello_techcrunch_disrupt/game/app.js"></script>  
+  </head>
+  <body>
+	<table id="connect_four"></table>	
+  </body>
+</html>  	
+  	
+]]></Content>
+</Module>
+
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="http://raycwang.com/Othello_techcrunch_disrupt/stylesheets/stylesheet.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <title>Othello techcrunch disrupt</title>
+    
+    <style>
+    	#connect_four { width: 500px; color: #fff; margin: 0px auto; margin-top: 30px; }
+    	#connect_four td { border: 1px solid #fff; text-align: center; padding: 5px;}
+    	body { background: url('https://s3.amazonaws.com/rwang_test/purty_wood.png') }
+    </style>
+  	
+  	<script src="http://raycwang.com/Othello_techcrunch_disrupt/spine/spine.js"></script> 
+	<script src="http://raycwang.com/Othello_techcrunch_disrupt/game/app.js"></script>  
+  </head>
+  <body>
+	<table id="connect_four"></table>	
+  </body>
+</html>  	
+  	
+]]></Content>
+</Module>
