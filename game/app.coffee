@@ -240,10 +240,22 @@ class OthelloGame extends Spine.Controller
     gapi.hangout.data.submitDelta('id': move.id, content: move.content)
 
     if won
-      window.reset = true
-      for g in Grid.all()
-        g.updateAttributes( content: "" )
-      window.reset = false
+      if move.content is "X"
+        won_person = "Red"
+      else
+        won_person = "Blue"
+      
+      $("#EventContainer").notify({
+        text: "<a onclick='window.reset()'>#{ won_person } won </a>", 
+        "sticky": true
+      })
+
+
+window.reset = ->
+    window.reset = true
+    for g in Grid.all()
+      g.updateAttributes( content: "" )
+    window.reset = false
 
 #take an update and apply it to the local model
 window.consume_update = (thestate)->

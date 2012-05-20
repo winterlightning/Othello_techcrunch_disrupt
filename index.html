@@ -28,10 +28,69 @@
 		#player_x { left: 10%; }
 		#player_o { right: 10%;  }
 		p { margin-top: 0px; color: #fff; text-align: center }
+		
+      /* Notifications */
+
+      #EventContainer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 20px 20px 0 0;
+      }
+
+      #EventContainer div.notice-inner {
+        position: relative;
+        width: 200px;
+        padding: 5px 15px 5px 10px;
+        margin:0 0 5px 0;
+        background-color: #000;
+        color: #FFF;
+
+        /* Round corners */
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+
+        /* Opacity */
+        filter:alpha(opacity=50);
+        -moz-opacity:0.5;
+        -khtml-opacity: 0.5;
+        opacity: 0.5;
+      }
+
+      #EventContainer > div.notice-inner span {
+        cursor: pointer;
+        position: absolute;
+        right: 5px;
+        top: 7px;
+        height: 7px;
+        width: 7px;
+        border: 1px solid #999;
+
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+
+        text-indent: -999px;
+        
+      }
+      .notice-inner span {
+      	float: right !important;
+      }
+      
+      #EventContainer > div.notice-inner span:hover {
+        background-color: #AAA;
+      }
+
+      #EventContainer div b {
+        color: #0F0;
+      }		
+		
     </style>
   	
   	<script src="spine/spine.js"></script> 
 	<script src="game/app.js"></script>  
+	<script src="game/jquery.growl.min.js"></script>  
   </head>
   <body>
 	<div class="centered">
@@ -46,5 +105,6 @@
 			<p>Currently Playing Blue</p>
 		</div>
 	</div>
+	<div id="EventContainer"></div>
   </body>
 </html>

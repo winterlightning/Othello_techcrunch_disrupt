@@ -111,7 +111,7 @@
       return _results;
     };
     OthelloGame.prototype.evaluate = function(move) {
-      var NE, NE_grid, NW, NW_grid, SE, SE_grid, SW, SW_grid, a, d, down, e_length, east, east_grid, g, length, v_length, w_length, west, west_grid, won, x, y, _i, _j, _k, _l, _len, _len2, _len3, _len4, _len5, _m, _ref, _ref2, _ref3, _ref4, _ref5;
+      var NE, NE_grid, NW, NW_grid, SE, SE_grid, SW, SW_grid, a, d, down, e_length, east, east_grid, length, v_length, w_length, west, west_grid, won, won_person, x, y, _i, _j, _k, _l, _len, _len2, _len3, _len4, _ref, _ref2, _ref3, _ref4;
       if (window.reset) {
         return;
       }
@@ -256,19 +256,31 @@
         content: move.content
       });
       if (won) {
-        window.reset = true;
-        _ref5 = Grid.all();
-        for (_m = 0, _len5 = _ref5.length; _m < _len5; _m++) {
-          g = _ref5[_m];
-          g.updateAttributes({
-            content: ""
-          });
+        if (move.content === "X") {
+          won_person = "Red";
+        } else {
+          won_person = "Blue";
         }
-        return window.reset = false;
+        return $("#EventContainer").notify({
+          text: "<a onclick='window.reset()'>" + won_person + " won </a>",
+          "sticky": true
+        });
       }
     };
     return OthelloGame;
   })();
+  window.reset = function() {
+    var g, _i, _len, _ref;
+    window.reset = true;
+    _ref = Grid.all();
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      g = _ref[_i];
+      g.updateAttributes({
+        content: ""
+      });
+    }
+    return window.reset = false;
+  };
   window.consume_update = function(thestate) {
     var a, updating;
     console.log("THE STATE IS", thestate);
