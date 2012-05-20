@@ -259,12 +259,12 @@
     return OthelloGame;
   })();
   window.consume_update = function(thestate) {
-    var a, parsed, updating;
-    a = thestate["last"];
-    parsed = JSON.parse(a);
+    var a, updating;
+    console.log("THE STATE IS", STATE);
+    a = thestate["id"];
     updating = Grid.find(parsed.id);
     return updating.updateAttributes({
-      content: parsed.content
+      content: thestate["content"]
     });
   };
   $(function() {
@@ -277,6 +277,7 @@
         if (eventObj.isApiReady) {
           console.log("API is ready");
           gapi.hangout.data.onStateChanged.add(function(eventObj) {
+            console.log("HANDLED");
             return console.log(eventObj.state);
           });
           gapi.hangout.onParticipantsChanged.add(function(eventObj) {
