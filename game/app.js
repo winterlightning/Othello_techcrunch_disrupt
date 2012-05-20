@@ -51,7 +51,7 @@
           a = Grid.find(x + this.item.id[1]);
           if (a.content === "") {
             a.updateAttributes({
-              content: window.current_player
+              content: window.player
             });
             found = true;
             if (window.current_player === "X") {

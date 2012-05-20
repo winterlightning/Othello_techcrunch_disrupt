@@ -35,7 +35,7 @@ class GridItem extends Spine.Controller
         a = Grid.find(x+@item.id[1])
         
         if a.content is ""
-          a.updateAttributes( content: window.current_player )
+          a.updateAttributes( content: window.player )
           found = true
           
           if window.current_player is "X"
