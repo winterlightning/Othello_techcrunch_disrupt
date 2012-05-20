@@ -264,8 +264,8 @@ apiReady = (eventObj) ->
       window.player = "O"
     else
       window.player = "X"
-      cur_player = gapi.hangout.getParticipants()
-      gapi.hangout.data.submitDelta('X', cur_player.id )
+      cur_player = gapi.hangout.getParticipants()[0]
+      gapi.hangout.data.submitDelta('x': cur_player.id )
       
     console.log gapi.hangout.getParticipants()
     
