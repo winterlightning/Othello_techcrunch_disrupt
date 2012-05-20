@@ -250,7 +250,7 @@
       }
       stringed = JSON.stringify(move);
       gapi.hangout.data.submitDelta({
-        'last': move
+        'last': stringed
       });
       if (won) {
         alert(move.content + " won!");

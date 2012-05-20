@@ -235,7 +235,7 @@ class OthelloGame extends Spine.Controller
       won = true    
 
     stringed = JSON.stringify(move)
-    gapi.hangout.data.submitDelta('last': move)
+    gapi.hangout.data.submitDelta('last': stringed)
 
     if won
       alert(move.content+" won!")
