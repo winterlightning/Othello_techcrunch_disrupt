@@ -297,7 +297,7 @@
       });
       if (state["x"] != null) {
         window.player = "O";
-        cur_player = gapi.hangout.getParticipants()[0];
+        cur_player = gapi.hangout.getParticipants()[1];
         $("#o_text").html(cur_player.displayName);
         $("#x_text").html(state["x"]);
       } else {
