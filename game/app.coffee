@@ -261,11 +261,17 @@ apiReady = (eventObj) ->
 
       state = gapi.hangout.data.getState()
       if state["x"]? and gapi.hangout.getParticipants().length is 2
-        window.player = "O"
-        cur_player = gapi.hangout.getParticipants()[0]
-        $("#o_text").html( cur_player["person"].displayName )
-        $("#x_text").html( state["x"] )
+        console.log("state 2")
+        if not window.player?
+          window.player = "O"
+          cur_player = gapi.hangout.getParticipants()[0]
+          $("#o_text").html( cur_player["person"].displayName )
+          $("#x_text").html( state["x"] )
+        else
+          other_player = gapi.hangout.getParticipants()[1]
+          $("#o_text").html( other_player["person"].displayName )
       else
+        console.log("state 1")
         window.player = "X"
         cur_player = gapi.hangout.getParticipants()[0]
         $("#x_text").html( cur_player["person"].displayName )

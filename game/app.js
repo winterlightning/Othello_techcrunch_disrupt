@@ -277,15 +277,22 @@
         return window.consume_update(eventObj.state);
       });
       gapi.hangout.onParticipantsChanged.add(function(eventObj) {
-        var cur_player, state;
+        var cur_player, other_player, state;
         console.log("Participant ENTERED TRIGGER");
         state = gapi.hangout.data.getState();
         if ((state["x"] != null) && gapi.hangout.getParticipants().length === 2) {
-          window.player = "O";
-          cur_player = gapi.hangout.getParticipants()[0];
-          $("#o_text").html(cur_player["person"].displayName);
-          return $("#x_text").html(state["x"]);
+          console.log("state 2");
+          if (!(window.player != null)) {
+            window.player = "O";
+            cur_player = gapi.hangout.getParticipants()[0];
+            $("#o_text").html(cur_player["person"].displayName);
+            return $("#x_text").html(state["x"]);
+          } else {
+            other_player = gapi.hangout.getParticipants()[1];
+            return $("#o_text").html(other_player["person"].displayName);
+          }
         } else {
+          console.log("state 1");
           window.player = "X";
           cur_player = gapi.hangout.getParticipants()[0];
           $("#x_text").html(cur_player["person"].displayName);
