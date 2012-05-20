@@ -13,12 +13,38 @@
     	#connect_four td { border: 3px solid #fff; text-align: center; padding: 0px;}
     	#connect_four .clickable { cursor: pointer }
     	body { background: url('images/purty_wood.png') }
+    	.player {
+	    	display: block;
+			width: 200px;
+			background-color: 
+			rgba(0, 0, 0, 0.5);
+			height: 200px;
+			position: absolute;
+			top: 20px;
+			border-radius: 7px;
+			padding: 0px 5px;
+			color: #fff;
+		}
+		#player_x { left: 10%; }
+		#player_o { right: 10%;  }
+		p { margin-top: 0px; color: #fff; text-align: center }
     </style>
   	
   	<script src="spine/spine.js"></script> 
 	<script src="game/app.js"></script>  
   </head>
   <body>
-	<table id="connect_four"></table>	
+	<div class="centered">
+		<table id="connect_four"></table>	
+		<div id="player_x" class="player">
+			<h2 style="color: white; text-align: center; font-family: Helvetica; font-size: 24px">Ray Wang</h2>
+			<p>Currently Playing Red</p>
+		</div>
+		
+		<div id="player_o" class="player">
+			<h2 style="color: white; text-align: center; font-family: Helvetica; font-size: 24px">No Opponent</h2>
+			<p>Currently Playing Blue</p>
+		</div>
+	</div>
   </body>
 </html>

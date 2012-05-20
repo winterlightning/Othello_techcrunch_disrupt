@@ -259,8 +259,18 @@ apiReady = (eventObj) ->
     gapi.hangout.onParticipantsChanged.add (eventObj) ->
       console.log eventObj.participants
 
-    console.log gapi.hangout.data.getState()
+    state = gapi.hangout.data.getState()
+    if state["x"]?
+      window.player = "O"
+    else
+      window.player = "X"
+      cur_player = gapi.hangout.getParticipants()
+      gapi.hangout.data.submitDelta('X', cur_player.id )
+      
     console.log gapi.hangout.getParticipants()
+    
+    #get state and participant, pick x and o
+    
     gapi.hangout.onApiReady.remove apiReady
 
 #gapi.hangout.onApiReady.add apiReady  

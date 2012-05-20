@@ -6,3 +6,10 @@
 Syncing stuff:
 1. have a state, basically, have a id and content
 2. Have an array of updates, each time an update happens, adds it to the array, use spine and a global handler to handle shit
+
+Turns:
+
+In the beginning, map a turn to each person.
+You can only move when the turn belong to you.
+
+Use the move object to switch turns. X = red, O = blue

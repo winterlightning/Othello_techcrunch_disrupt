@@ -265,6 +265,7 @@
     });
   };
   apiReady = function(eventObj) {
+    var cur_player, state;
     if (eventObj.isApiReady) {
       console.log("API is ready");
       gapi.hangout.data.onStateChanged.add(function(eventObj) {
@@ -275,7 +276,14 @@
       gapi.hangout.onParticipantsChanged.add(function(eventObj) {
         return console.log(eventObj.participants);
       });
-      console.log(gapi.hangout.data.getState());
+      state = gapi.hangout.data.getState();
+      if (state["x"] != null) {
+        window.player = "O";
+      } else {
+        window.player = "X";
+        cur_player = gapi.hangout.getParticipants();
+        gapi.hangout.data.submitDelta('X', cur_player.id);
+      }
       console.log(gapi.hangout.getParticipants());
       return gapi.hangout.onApiReady.remove(apiReady);
     }
