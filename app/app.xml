@@ -34,7 +34,7 @@
     
     <style>
     	#connect_four { width: 500px; color: #fff; margin: 0px auto; margin-top: 30px; }
-    	#connect_four td { border: 1px solid #fff; text-align: center; }
+    	#connect_four td { border: 1px solid #fff; text-align: center; padding: 5px;}
     </style>
   	
   	<script src="http://raycwang.com/Othello_techcrunch_disrupt/spine/spine.js"></script> 
