@@ -234,7 +234,7 @@ class OthelloGame extends Spine.Controller
       console.log("won from w diagnal")
       won = true    
 
-    #gapi.hangout.data.submitDelta('id': move.id, content: move.content)
+    gapi.hangout.data.submitDelta('id': move.id, content: move.content)
 
     if won
       alert(move.content+" won!")
@@ -273,7 +273,7 @@ apiReady = (eventObj) ->
     
     gapi.hangout.onApiReady.remove apiReady
 
-#gapi.hangout.onApiReady.add apiReady  
+gapi.hangout.onApiReady.add apiReady  
     
 $ ->
   new OthelloGame()
