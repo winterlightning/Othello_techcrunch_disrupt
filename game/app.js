@@ -249,7 +249,8 @@
         won = true;
       }
       gapi.hangout.data.submitDelta({
-        'id': move.id
+        'id': move.id,
+        content: move.content
       });
       if (won) {
         alert(move.content + " won!");
@@ -262,7 +263,7 @@
     var a, updating;
     console.log("THE STATE IS", STATE);
     a = thestate["id"];
-    updating = Grid.find(parsed.id);
+    updating = Grid.find(a);
     return updating.updateAttributes({
       content: thestate["content"]
     });
@@ -272,7 +273,7 @@
       console.log("API is ready");
       gapi.hangout.data.onStateChanged.add(function(eventObj) {
         console.log("HANDLED");
-        return console.log(eventObj.state);
+        return window.consume_update(eventObj.state);
       });
       gapi.hangout.onParticipantsChanged.add(function(eventObj) {
         return console.log(eventObj.participants);

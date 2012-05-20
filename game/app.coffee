@@ -234,7 +234,7 @@ class OthelloGame extends Spine.Controller
       console.log("won from w diagnal")
       won = true    
 
-    gapi.hangout.data.submitDelta('id': move.id)
+    gapi.hangout.data.submitDelta('id': move.id, content: move.content)
 
     if won
       alert(move.content+" won!")
@@ -245,7 +245,7 @@ window.consume_update = (thestate)->
     console.log("THE STATE IS", STATE)
     a = thestate["id"]
     
-    updating = Grid.find(parsed.id)
+    updating = Grid.find(a)
     updating.updateAttributes( content: thestate["content"] )
 
 apiReady = (eventObj) ->
@@ -253,7 +253,7 @@ apiReady = (eventObj) ->
     console.log "API is ready"
     gapi.hangout.data.onStateChanged.add (eventObj) ->
       console.log("HANDLED")
-      console.log eventObj.state
+      window.consume_update eventObj.state
 
     gapi.hangout.onParticipantsChanged.add (eventObj) ->
       console.log eventObj.participants
@@ -266,7 +266,6 @@ gapi.hangout.onApiReady.add apiReady
     
 $ ->
   new OthelloGame()
-
 
 exports = this
 exports.OthelloGame = OthelloGame
