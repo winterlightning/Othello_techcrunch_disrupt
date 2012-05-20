@@ -256,7 +256,25 @@
     return OthelloGame;
   })();
   $(function() {
-    return new OthelloGame();
+    var apiReady, init;
+    new OthelloGame();
+    init = function() {};
+    console.log("Init app.");
+    apiReady = function(eventObj) {
+      if (eventObj.isApiReady) {
+        console.log("API is ready");
+        gapi.hangout.data.onStateChanged.add(function(eventObj) {
+          return console.log(eventObj.state);
+        });
+        gapi.hangout.onParticipantsChanged.add(function(eventObj) {
+          return console.log(eventObj.participants);
+        });
+        console.log(gapi.hangout.data.getState());
+        console.log(gapi.hangout.getParticipants());
+        return gapi.hangout.onApiReady.remove(apiReady);
+      }
+    };
+    return gapi.hangout.onApiReady.add(apiReady);
   });
   exports = this;
   exports.OthelloGame = OthelloGame;

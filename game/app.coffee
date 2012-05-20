@@ -241,6 +241,23 @@ class OthelloGame extends Spine.Controller
 $ ->
   new OthelloGame()
 
+  init = ->
+  console.log "Init app."
+  apiReady = (eventObj) ->
+    if eventObj.isApiReady
+      console.log "API is ready"
+      gapi.hangout.data.onStateChanged.add (eventObj) ->
+        console.log eventObj.state
+
+      gapi.hangout.onParticipantsChanged.add (eventObj) ->
+        console.log eventObj.participants
+
+      console.log gapi.hangout.data.getState()
+      console.log gapi.hangout.getParticipants()
+      gapi.hangout.onApiReady.remove apiReady
+
+  gapi.hangout.onApiReady.add apiReady  
+
 exports = this
 exports.OthelloGame = OthelloGame
 exports.GridItem = GridItem
