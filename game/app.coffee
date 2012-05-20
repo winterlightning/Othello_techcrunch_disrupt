@@ -243,6 +243,7 @@ class OthelloGame extends Spine.Controller
       reset = true
       for g in Grid.all()
         g.updateAttributes( content: "" )
+      reset = false
 
 #take an update and apply it to the local model
 window.consume_update = (thestate)->
