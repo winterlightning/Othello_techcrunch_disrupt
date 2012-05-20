@@ -29,7 +29,7 @@
     
     <script src="//talkgadget.google.com/hangouts/_/api/hangout.js?v=1.1"></script>
     
-    <link rel="stylesheet" type="text/css" media="screen" href="http://raycwang.com/Othello_techcrunch_disrupt/stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://s3.amazonaws.com/rwang_test/stylesheet.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <title>Othello techcrunch disrupt</title>
     
@@ -113,9 +113,9 @@
 		
     </style>
   	
-  	<script src="http://raycwang.com/Othello_techcrunch_disrupt/spine/spine.js"></script> 
-	<script src="http://raycwang.com/Othello_techcrunch_disrupt/game/app.js"></script>  
-	<script src="http://raycwang.com/Othello_techcrunch_disrupt/game/jquery.growl.min.js"></script> 
+  	<script src="https://s3.amazonaws.com/rwang_test/spine.js"></script> 
+	<script src="https://s3.amazonaws.com/rwang_test/app.js"></script>  
+	<script src="https://s3.amazonaws.com/rwang_test/jquery.growl.min.js"></script> 
   </head>
   <body>
 	<div class="centered">
