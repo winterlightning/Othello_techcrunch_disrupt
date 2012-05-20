@@ -261,7 +261,7 @@
   })();
   window.consume_update = function(thestate) {
     var a, updating;
-    console.log("THE STATE IS", STATE);
+    console.log("THE STATE IS", thestate);
     a = thestate["id"];
     updating = Grid.find(a);
     return updating.updateAttributes({
@@ -273,6 +273,7 @@
       console.log("API is ready");
       gapi.hangout.data.onStateChanged.add(function(eventObj) {
         console.log("HANDLED");
+        console.log("eventOb", eventObj.state);
         return window.consume_update(eventObj.state);
       });
       gapi.hangout.onParticipantsChanged.add(function(eventObj) {

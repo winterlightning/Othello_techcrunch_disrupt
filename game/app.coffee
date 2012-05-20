@@ -242,7 +242,7 @@ class OthelloGame extends Spine.Controller
 
 #take an update and apply it to the local model
 window.consume_update = (thestate)->
-    console.log("THE STATE IS", STATE)
+    console.log("THE STATE IS", thestate)
     a = thestate["id"]
     
     updating = Grid.find(a)
@@ -253,6 +253,7 @@ apiReady = (eventObj) ->
     console.log "API is ready"
     gapi.hangout.data.onStateChanged.add (eventObj) ->
       console.log("HANDLED")
+      console.log("eventOb", eventObj.state)
       window.consume_update eventObj.state
 
     gapi.hangout.onParticipantsChanged.add (eventObj) ->
