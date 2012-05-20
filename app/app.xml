@@ -17,6 +17,7 @@
  */ -->
   <ModulePrefs title="Starter App">
     <Require feature="rpc"/>
+    <Require feature="views"/>
   </ModulePrefs>
   <Content type="html"><![CDATA[
 <!DOCTYPE html>
