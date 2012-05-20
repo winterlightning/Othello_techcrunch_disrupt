@@ -279,6 +279,10 @@
       g.updateAttributes({
         content: ""
       });
+      gapi.hangout.data.submitDelta({
+        'id': g.id,
+        content: ""
+      });
     }
     return window.reset = false;
   };

@@ -256,6 +256,7 @@ window.reset_grid = ->
     window.reset = true
     for g in Grid.all()
       g.updateAttributes( content: "" )
+      gapi.hangout.data.submitDelta('id': g.id, content: "")
     window.reset = false
 
 #take an update and apply it to the local model
