@@ -280,7 +280,7 @@
         var cur_player, state;
         console.log("Participant ENTERED TRIGGER");
         state = gapi.hangout.data.getState();
-        if (state["x"] != null) {
+        if ((state["x"] != null) && gapi.hangout.getParticipants().length === 2) {
           window.player = "O";
           cur_player = gapi.hangout.getParticipants()[0];
           $("#o_text").html(cur_player["person"].displayName);
