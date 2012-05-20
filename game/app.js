@@ -284,15 +284,15 @@
         if (state["x"] != null) {
           window.player = "O";
           cur_player = gapi.hangout.getParticipants()[0];
-          $("o_text").html(cur_player["person"].displayName);
-          return $("x_text").html(state["x"]);
+          $("#o_text").html(cur_player["person"].displayName);
+          return $("#x_text").html(state["x"]);
         } else {
           window.player = "X";
           cur_player = gapi.hangout.getParticipants()[0];
           gapi.hangout.data.submitDelta({
             'x': cur_player["person"].displayName
           });
-          return $("x_text").html(cur_player.displayName);
+          return $("#x_text").html(cur_player.displayName);
         }
       });
       if (state["x"] != null) {
