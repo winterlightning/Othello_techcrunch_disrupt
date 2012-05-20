@@ -285,8 +285,14 @@
           if (!(window.player != null)) {
             window.player = "O";
             cur_player = gapi.hangout.getParticipants()[1];
-            $("#o_text").html(cur_player["person"].displayName);
-            return $("#x_text").html(state["x"]);
+            if (cur_player["person"].displayName !== state["x"]) {
+              $("#o_text").html(cur_player["person"].displayName);
+              return $("#x_text").html(state["x"]);
+            } else {
+              cur_player = gapi.hangout.getParticipants()[0];
+              $("#o_text").html(cur_player["person"].displayName);
+              return $("#x_text").html(state["x"]);
+            }
           } else {
             other_player = gapi.hangout.getParticipants()[1];
             return $("#o_text").html(other_player["person"].displayName);

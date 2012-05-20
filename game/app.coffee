@@ -265,8 +265,15 @@ apiReady = (eventObj) ->
         if not window.player?
           window.player = "O"
           cur_player = gapi.hangout.getParticipants()[1]
-          $("#o_text").html( cur_player["person"].displayName )
-          $("#x_text").html( state["x"] )
+          
+          if cur_player["person"].displayName isnt state["x"]
+            $("#o_text").html( cur_player["person"].displayName )
+            $("#x_text").html( state["x"] )
+          else
+            cur_player = gapi.hangout.getParticipants()[0]
+            $("#o_text").html( cur_player["person"].displayName )
+            $("#x_text").html( state["x"] )
+            
         else
           other_player = gapi.hangout.getParticipants()[1]
           $("#o_text").html( other_player["person"].displayName )
